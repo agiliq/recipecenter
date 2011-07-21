@@ -13,9 +13,7 @@
 </head>
 
 <body>
-
 <div id="top-bg"></div>
-
 <div id="wrapper-outer" class="clearfix">
 
       <div id="pans"></div>
@@ -170,11 +168,17 @@
                   <div class="sidebar-inner">
                         <div class="box">
                               <h2>Recipes</h2>
+                              {% if categobj %}
                               <ul>
-                                    <li><a href="#">I am a simple link</a></li>
-                                    <li><a href="#">I am another simple link</a></li>
-                                    <li><a href="#">I am a simple link</a></li>
-                                    <li><a href="#">I am another simple link simple anchor</a></li>
+                                   {% for categ in  categobj %}
+                                    <li><a href="{% url categ_id=categ.name %}">{{ categ.name }} </a> </li>
+                                    {% endfor %}
+                               </ul>
+                              {% else %}
+                              <p> Screwed </p>
+                              {% endif %}
+                                   
+                                   
                               </ul>
                         </div>
                   </div>
