@@ -4,22 +4,20 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from djangoratings.views import AddRatingFromModel
 from django.conf import settings
 # Uncomment the next two lines to enable the admin:
-#from django.contrib import admin
-#admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     
     url('^hello/$', 'recipes.views.hello', name='hello'),
-    url('^base/$', 'recipes.views.base', name='base'),
-    # Examples:
-    # url(r'^$', 'recipecenter.views.home', name='home'),
-    # url(r'^recipecenter/', include('recipecenter.foo.urls')),
-
+    url('^$', 'recipes.views.base', name='base'),
+    url('^datadisp/(?P<recipe_id>[\w-]+)/$', 'recipes.views.datadisp', name='datadisp'),
+    #url('^index/$', 'recipes.views.index',name='index'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+ # Uncomment the next line to enable the admin:
+     url(r'^admin/', include(admin.site.urls)),
+   
 )
 
 if settings.DEBUG:
