@@ -44,7 +44,7 @@
             
             <!-- Content -->
             <div id="content">
-                  <div class="png"><img class="top" src="elements/images/top-curve.png" width="724" height="8" alt="" /></div>
+                  <div class="png"><img class="top" src="static/elements/images/top-curve.png" width="724" height="8" alt="" /></div>
                   <div id="inner-content">
                   
                         <div class="post clearfix">
@@ -53,7 +53,7 @@
                                     Written on the 12th August, 2009 by Keith Donegan
                               </div>
                               <div class="thumbnail-large">
-                                    <a href=""><img src="elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a>
+                                    <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a>
                               </div>
                               <div class="text">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
@@ -77,7 +77,7 @@
                                     Written on the 12th August, 2009 by Keith Donegan
                               </div>
                               <div class="thumbnail-large">
-                                    <a href=""><img src="elements/images/sample-food/food-2.jpg" width="300" height="220" alt="" /></a>
+                                    <a href=""><img src="static/elements/images/sample-food/food-2.jpg" width="300" height="220" alt="" /></a>
                               </div>
                               <div class="text">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
@@ -144,45 +144,42 @@
                         </div>
                         
                   </div>
-                  <img class="curve-bottom" src="elements/images/bottom-curve.png" width="724" height="8" alt="" />
+                  <img class="curve-bottom" src="static/elements/images/bottom-curve.png" width="724" height="8" alt="" />
             </div>
             <!-- / Content -->
             
             <!-- Sidebar -->
             <div id="sidebar">
-                  <div class="png"><img class="top" src="elements/images/sidebar-top.png" width="182" height="10" alt="" /></div>
+                  <div class="png"><img class="top" src="static/elements/images/sidebar-top.png" width="182" height="10" alt="" /></div>
                   <div class="sidebar-inner">
                         <div class="box">
                               <h2>Categories</h2>
-                              <ul>
-                                    <li><a href="#">I am a simple link</a></li>
-                                    <li><a href="#">I am another simple link</a></li>
-                                    <li><a href="#">I am a simple link</a></li>
-                                    <li><a href="#">I am another simple link simple anchor</a></li>
-                              </ul>
-                        </div>
+                                {% if categobj %}
+                                <ul>
+                                {% for categ in  categobj %}
+                                    <li><a href="{% url categ_id=categ.name }">{{ categ.name }} </a> </li>
+                                {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p> Screwed </p>
+                                {% endif %}
+                          </div>
                   </div>
-                  <div class="png"><img class="top bottom" src="elements/images/sidebar-bottom.png" width="182" height="10" alt="" /></div>
+                  <!-- <div class="png"><img class="top bottom" src="elements/images/sidebar-bottom.png" width="182" height="10" alt="" /></div> -->
                   
-                  <div class="png"><img class="top" src="elements/images/sidebar-top.png" width="182" height="10" alt="" /></div>
-                  <div class="sidebar-inner">
-                        <div class="box">
-                              <h2>Recipes</h2>
-                              {% if categobj %}
-                              <ul>
-                                   {% for categ in  categobj %}
-                                    <li><a href="{% url categ_id=categ.name %}">{{ categ.name }} </a> </li>
-                                    {% endfor %}
-                               </ul>
-                              {% else %}
-                              <p> Screwed </p>
-                              {% endif %}
-                                   
-                                   
-                              </ul>
-                        </div>
-                  </div>
-                  <div class="png"><img class="top bottom" src="elements/images/sidebar-bottom.png" width="182" height="10" alt="" /></div>
+                  <!-- <div class="png"><img class="top" src="elements/images/sidebar-top.png" width="182" height="10" alt="" /></div> -->
+                  <!-- <div class="sidebar-inner"> -->
+                  <!--       <div class="box"> -->
+                  <!--             <h2>Recipes</h2> -->
+                  <!--              <ul> -->
+                  <!--                   <li><a href="#">I am a simple link</a></li> -->
+                  <!--                   <li><a href="#">I am another simple link</a></li> -->
+                  <!--                   <li><a href="#">I am a simple link</a></li> -->
+                  <!--                   <li><a href="#">I am another simple link simple anchor</a></li> -->
+                  <!--             </ul> -->
+                  <!--       </div> -->
+                  <!-- </div> -->
+                  <div class="png"><img class="top bottom" src="static/elements/images/sidebar-bottom.png" width="182" height="10" alt="" /></div>
                   
                   <div id="rss-pane">
                         <div class="feedburner">
