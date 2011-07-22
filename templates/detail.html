@@ -1,0 +1,26 @@
+
+{{ recipe.name }}
+<p> The way to prepare it is: </p>
+<br>
+{{ recipe.instructions }}
+<br>
+<p> The ingredients are </p>
+{{ recipe.ingredients }}
+{% load comments %}
+<h4> Images </h4>
+<img src="{{ STATIC_URL }}{{recipe.image}}" />
+<h4> Rating </h4>
+
+<a href= {%url vote object_id=recipe.id, score=1%}> Score 1 </a>
+<a href= {%url vote object_id=recipe.id, score=2%}> Score 2 </a>
+<a href= {%url vote object_id=recipe.id, score=3%}> Score 3 </a>
+<a href= {%url vote object_id=recipe.id, score=4%}> Score 4 </a>
+
+{% load ratings %}
+{% rating_by_request request on recipes.rating as vote %}
+{{ vote }}
+<h4> Comments: </h4>
+{% render_comment_list for recipe %}
+
+{% render_comment_form for recipe %}
+ <!-- {{ recipe.image }}  -->

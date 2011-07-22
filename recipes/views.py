@@ -4,6 +4,7 @@ from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import Context, loader, RequestContext
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from djangoratings.views import AddRatingView
 
 def render(request, template, context):
     return render_to_response(template,context,context_instance = RequestContext(request))
