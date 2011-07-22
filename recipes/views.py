@@ -15,10 +15,20 @@ def base(request):
     return render(request, 'base.html', {})
 
 def category(request, category_slug=None):
-    p = RecipeDump.objects.filter(category__slug__exact = category_slug)
-    if p.count() == 0:
-        raise Http404
-    return render(request, 'category.html', {'category_dishes': p}) 
+   p = RecipeDump.objects.filter(category__slug__exact = category_slug)
+   if p.count() == 0:
+       raise Http404
+   paginator = Paginator(p,25)#show 20 recipes per page
+   page = request.GET.get('page', 1)
+   try:
+       contents = paginator.page(page)
+   except PageNotAnInteger:
+       # If page is not an integer, deliver first page.
+       contents = paginator.page(1)
+   except EmptyPage:
+      #If page is out of range, deliver last page of results.
+       contents = paginator.page(paginator.num_pages)
+   return render(request, 'category.html', {'category_dishes': contents})
 
 def detail(request, recipe_id=None):
     p = RecipeDump.objects.filter(slug=recipe_id)

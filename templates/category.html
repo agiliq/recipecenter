@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
-{% block category %}
+{% block content %}
+{% for dish  in category_dishes.object_list %} 
+{{ dish.name }}
+</br>
+{% endfor %}
 
-{{ category }}
-<p> I am inside category html </p>
+<div class="pagination">
+    <span class="step-links">
+        {% if category_dishes.has_previous %}
+            <a href="?page={{ category_dishes.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ category_dishes.number }} of {{ category_dishes.paginator.num_pages }}.
+        </span>
+
+        {% if category_dishes.has_next %}
+            <a href="?page={{ category_dishes.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
+
+
