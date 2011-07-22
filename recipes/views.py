@@ -17,9 +17,12 @@ def hello(request):
 def base(request):
     return render(request, 'base.html', {'recipesobj':recipesobj,'categobj':categobj})
 
-def datadisp(request):
-    return render(request, 'base.html', none)
- 
+def category(request, category_name=None):
+    try:
+        p = RecipeDump.objects.filter(category__name__exact = category_name)
+    except IndexError:
+        raise Http404
+    return render(request, 'category.html', {'category': p}) 
 
 def detail(request, recipe_id=None):
     try:

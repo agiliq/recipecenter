@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     
     url('^hello/$', 'recipes.views.hello', name='hello'),
     url('^$', 'recipes.views.base', name='base'),
-    url('^datadisp/(?P<recipe_id>[\w-]+)/$', 'recipes.views.datadisp', name='datadisp'),
+    url('^category/(?P<category_name>[\w]+)/$', 'recipes.views.category', name='category'),
     #url('^index/$', 'recipes.views.index',name='index'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
