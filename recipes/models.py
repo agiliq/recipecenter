@@ -5,8 +5,11 @@ from djangoratings.fields import RatingField
 
 class Category(models.Model):
     name = models.CharField(max_length = 100)
-   # slug = models.SlugField(max_length=100)
+    slug = models.SlugField(max_length=100)
     
+    def __unicode__(self):
+        return self.name
+
     def get_absolute_url(self):
         return "/category/%s/" % self.name
    
