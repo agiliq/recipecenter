@@ -13,13 +13,14 @@ def hello(request):
     return HttpResponse("Hello world")
 
 def base(request):
-    return render(request, 'base.html', {})
+    recipe_list = RecipeDump.objects.order_by('?')[:10]
+    return render(request, 'index.html', {'recipe_list':recipe_list})
 
 def category(request, category_slug=None):
    p = RecipeDump.objects.filter(category__slug__exact = category_slug)
    if p.count() == 0:
        raise Http404
-   paginator = Paginator(p,25)#show 20 recipes per page
+   paginator = Paginator(p,5)#show 20 recipes per page
    page = request.GET.get('page', 1)
    try:
        contents = paginator.page(page)
