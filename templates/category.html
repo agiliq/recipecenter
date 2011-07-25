@@ -2,8 +2,26 @@
 
 {% block content %}
 {% for dish  in category_dishes.object_list %} 
-{{ dish.name }}
-</br>
+    <ul>
+    <li><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></li>
+  
+     <div class="thumbnail-large"> 
+         <img src="{{ STATIC_URL }}{{dish.image}}" />
+                        <!--             <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a> -->
+                        <!--       </div> -->
+     <div class="text">
+       </br>
+       {{dish.ingredients|slice:":180"}}
+       <a href="{% url recipe_detail recipe_id=dish.slug %}">{{"read more ...."}}</a>
+       </br>
+       </br>
+       </br>
+       {{dish.instructions|slice:":180"}}
+       <a href="{% url recipe_detail recipe_id=dish.slug %}">{{"read more ...."}}</a>       
+       </br>
+       </br>
+     </div>
+    </ul>
 {% endfor %}
 
 <div class="pagination">
