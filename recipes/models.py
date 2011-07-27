@@ -36,7 +36,7 @@ class RecipeDump(models.Model):
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    rating = RatingField(range=5)
+    rating = RatingField(range=5, allow_anonymous=True)
 
     def title(self):
         return self.name

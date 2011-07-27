@@ -3,13 +3,12 @@
 <title> Details of  {{recipe.name}} </title>
 {% endblock %}
 {% block content %}
-{% autoescape on %}
 <h1> {{ recipe.name }} </h1>
-{% if recipe.image.is_exists %}
+
     <img src="{{ STATIC_URL }}images/{{recipe.image}}" />
-{% else %}
-    <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" />
-{% endif %}
+
+    <!-- <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" /> -->
+
 
     </br>
 <p>  The way to prepare it is:</p>
@@ -22,7 +21,7 @@
 {{ recipe.ingredients|safe }}
 </div>
 </br> </br>
-{% endautoescape %}
+
 {% load comments %}
 <p> Rate the recipe item </p> <br>
 <a href= {%url vote object_id=recipe.id, score=1%}> Score 1 </a> </br>
