@@ -1,21 +1,34 @@
+{% extends 'base.html' %}
+{% block title_head %}
+<title> Details of  {{recipe.name}} </title>
+{% endblock %}
+{% block content %}
+{% autoescape on %}
+<h1> {{ recipe.name }} </h1>
+{% if recipe.image.is_exists %}
+    <img src="{{ STATIC_URL }}images/{{recipe.image}}" />
+{% else %}
+    <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" />
+{% endif %}
 
-{{ recipe.name }}
-<p> The way to prepare it is: </p>
-<br>
-{{ recipe.instructions }}
-<br>
-<p> The ingredients are </p>
-{{ recipe.ingredients }}
+    </br>
+<p>  The way to prepare it is:</p>
+<div class="text">
+{{ recipe.instructions|safe }}
+</div>
+</br> </br> </br>
+<p>The ingredients are: </p>
+<div class="text">
+{{ recipe.ingredients|safe }}
+</div>
+</br> </br>
+{% endautoescape %}
 {% load comments %}
-<h4> Images </h4>
-<img src="{{ STATIC_URL }}{{recipe.image}}" />
-<h4> Rating </h4>
-
-<a href= {%url vote object_id=recipe.id, score=1%}> Score 1 </a>
-<a href= {%url vote object_id=recipe.id, score=2%}> Score 2 </a>
-<a href= {%url vote object_id=recipe.id, score=3%}> Score 3 </a>
-<a href= {%url vote object_id=recipe.id, score=4%}> Score 4 </a>
-
+<p> Rate the recipe item </p> <br>
+<a href= {%url vote object_id=recipe.id, score=1%}> Score 1 </a> </br>
+<a href= {%url vote object_id=recipe.id, score=2%}> Score 2 </a> </br>
+<a href= {%url vote object_id=recipe.id, score=3%}> Score 3 </a> </br>
+<a href= {%url vote object_id=recipe.id, score=4%}> Score 4 </a> </br>
 {% load ratings %}
 {% rating_by_request request on recipes.rating as vote %}
 {{ vote }}
@@ -23,4 +36,4 @@
 {% render_comment_list for recipe %}
 
 {% render_comment_form for recipe %}
- <!-- {{ recipe.image }}  -->
+ {% endblock %}
