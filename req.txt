@@ -1,0 +1,6 @@
+django
+south
+django-ratings
+haystack
+whoosh
+
