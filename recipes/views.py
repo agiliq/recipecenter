@@ -10,10 +10,10 @@ def render(request, template, context):
     return render_to_response(template,context,context_instance = RequestContext(request))
 
 def hello(request):
-    return HttpResponse("Hello world")
+    return HttpResponse("Angry Birds is like life, the more you play the more you enjoy, the more you calculate, the tougher it get.")
 
 def base(request):
-    recipe_list = RecipeDump.objects.order_by('?')[:10]
+    recipe_list = RecipeDump.objects.order_by('?')[:5]
     return render(request, 'index.html', {'recipe_list':recipe_list})
 
 def category(request, category_slug=None):

@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
-
+{% block title_head %}
+<title> Category {{category_dishes.object_list.0.category}} </title>
+{% endblock %}
 {% block content %}
 {% for dish  in category_dishes.object_list %} 
     <ul>
     <li><h1><b><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></h1></b></li>
   <br/>
-     <div class="thumbnail-large"> 
+         {% if dish.image.is_exists %}
          <img src="{{ STATIC_URL }}images/{{dish.image}}" width=150px />
-                        <!--             <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a> -->
-                        <!--       </div> -->
+          {% else %}
+           <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" />
+           {% endif %}
      <div class="text">
-        {{dish.instructions|slice:":280"}}
+        {{dish.instructions|safe|slice:":280"}}
        <a href="{% url recipe_detail recipe_id=dish.slug %}"><i>{{"read more ..."}}</i></a>       
        </br>
-       </br>
-       </br>
-       
      </div>
     </ul>
+
 {% endfor %}
 
 <div class="pagination">
