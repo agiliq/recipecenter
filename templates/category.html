@@ -7,11 +7,11 @@
     <ul>
     <li><h1><b><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></h1></b></li>
   <br/>
-         {% if dish.image.is_exists %}
+        
          <img src="{{ STATIC_URL }}images/{{dish.image}}" width=150px />
-          {% else %}
+          {% empty %}
            <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" />
-           {% endif %}
+
      <div class="text">
         {{dish.instructions|safe|slice:":280"}}
        <a href="{% url recipe_detail recipe_id=dish.slug %}"><i>{{"read more ..."}}</i></a>       
