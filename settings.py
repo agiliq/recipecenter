@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'djangoratings',
     'recipes',
     'south',
+    'haystack',
     # Uncomment the next line to enable the admin:
     
     # Uncomment the next line to enable admin documentation:
@@ -160,4 +161,8 @@ LOGGING = {
         },
     }
 }
+HAYSTACK_SITECONF = 'recipecenter.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
+HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__),'mysite_index')
 from local_settings import *
