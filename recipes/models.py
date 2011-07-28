@@ -15,7 +15,7 @@ class Category(models.Model):
    
    
 
-class RecipeDump(models.Model):
+class Recipe(models.Model):
     class Meta:
         db_table = "addrecipe"
         ordering = ['name']
