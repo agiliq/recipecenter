@@ -1,7 +1,7 @@
 import datetime
 from haystack.indexes import *
 from haystack import site
-from recipes.models import RecipeDump
+from recipes.models import Recipe
 
 class RecipeIndex(SearchIndex):
   text = CharField(document=True, use_template=True)
@@ -13,4 +13,4 @@ class RecipeIndex(SearchIndex):
   def index_queryset(self):
     return RecipeIndex.objects.filter(pub_date_lte=datetime.datetime.now())
 
-site.register(RecipeDump, RecipeIndex)
+site.register(Recipe, RecipeIndex)
