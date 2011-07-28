@@ -42,7 +42,7 @@ class RecipeDump(models.Model):
         return self.name
    
     def get_absolute_url(self):
-        return "/details/%s/" % self.slug
+        return "/detail/%s/" % self.slug
     
 
 

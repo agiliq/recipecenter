@@ -57,20 +57,24 @@
                   <h1><a href="#">Time for Food</a></h1>
             </div>
             
-            <div id="search">
-                  <form method="get" id="searchform" action="/">
-                        <input type="text" value="" name="s" id="s" size="15" />
+             <div id="search">
+                  <form method="get" id="searchform"  action="/search/">
+                        <input type="text" value="" name="q" id="s" size="15" />
                         <input type="submit" id="searchsubmit" value="" />
                   </form>
-                  {% block search %}
-
-                  {% endblock %}
-            </div>
+             </div>
+           
+            
             
             <!-- Content -->
             <div id="content">
+             
                   <div class="png"><img class="top" src="static/elements/images/top-curve.png" width="724" height="8" alt="" /></div>
                   <div id="inner-content">
+                  {% block search %}
+
+                  {% endblock %}
+                  
                   {% block content %}
                   
                   {% endblock %}

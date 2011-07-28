@@ -6,12 +6,8 @@
 <h1> {{ recipe.name }} </h1>
 
     <img src="{{ STATIC_URL }}images/{{recipe.image}}" />
-    {% empty %}
-    <img src="http://recipes.agiliq.com/static/images/1172133326FROZENBANANA.jpg" />
-
-
-    </br>
-<p>  The way to prepare it is:</p>
+   <br>
+   <p>  The way to prepare it is:</p>
 <div class="text">
 {{ recipe.instructions|safe }}
 </div>
