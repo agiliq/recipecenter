@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title_head %}
-<title> Category {{category_dishes.object_list.0.category}} </title>
-{% endblock %}
+
+{% block title %} Recipes about {{category_dishes.object_list.0.category}}{% endblock %}
+
 {% block content %}
 {% for dish  in category_dishes.object_list %} 
     <ul>
