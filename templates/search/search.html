@@ -22,6 +22,10 @@
                 <p>
                     <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
                 </p>
+                <div class="text">
+                {{ result.object.instructions|safe|slice:":280" }}   <a href="{{ result.object.get_absolute_url }}">{{"read more..."}}</a>
+                </div>
+                <br>
             {% empty %}
                 <p>No results found.</p>
             {% endfor %}
