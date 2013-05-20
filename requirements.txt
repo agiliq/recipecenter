@@ -6,5 +6,5 @@ whoosh
 redis
 PIL
 sorl-thumbnail
-pip install gunicorn
+gunicorn
 
