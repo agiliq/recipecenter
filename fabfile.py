@@ -2,8 +2,9 @@ from __future__ import with_statement
 from fabric.api import *
 from fabric.contrib.console import confirm
 
-env.hosts = ['apps.in']
+env.hosts = ['recipecenter.in']
 SUPERVISOR_DIR = 'recipecenter/supervisord.conf/'
+env.port = 49169
 
 
 def make_supervisor_conf():
@@ -43,4 +44,4 @@ def deploy():
         run(" pip install -r requirements.txt")
         run("cp local_settings.py-dist local_settings.py")
         run("python manage.py syncdb --migrate --noinput")
-        run("python manage.py run_gunicorn -c gunicorn.conf.py")
+        run("supervisorctl restart recipecenter:gunicorn_recipecenter")
