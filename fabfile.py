@@ -3,7 +3,7 @@ from fabric.api import *
 from fabric.contrib.console import confirm
 
 env.hosts = ['recipecenter.in']
-SUPERVISOR_DIR = 'recipecenter/supervisord.conf/'
+SUPERVISOR_DIR = 'recipecenter/recipecenter.conf/'
 env.port = 49169
 
 
