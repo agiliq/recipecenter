@@ -16,9 +16,9 @@ class Category(models.Model):
    
 
 class Recipe(models.Model):
-    class Meta:
-        db_table = "addrecipe"
-        ordering = ['name']
+   # class Meta:
+       # db_table = "addrecipe"
+        #ordering = ['name']
     def __unicode__(self):
         return self.name
 
