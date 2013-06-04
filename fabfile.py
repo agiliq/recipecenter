@@ -2,13 +2,11 @@ from __future__ import with_statement
 from fabric.api import *
 from fabric.contrib.console import confirm
 
+env.user = 'agiliq'
 env.hosts = ['recipecenter.in']
-SUPERVISOR_DIR = 'recipecenter/recipecenter.conf/'
+SUPERVISOR_DIR = '/home/agiliq/recipecenter/recipecenter.conf'
 env.port = 49169
 
-
-def make_supervisor_conf():
-    put('recipecenter' % {'supervisor_dir': SUPERVISOR_DIR})
 
 
 def test():
@@ -34,7 +32,6 @@ def prepare_deploy():
 
 def deploy():
     code_dir = '/home/agiliq/recipecenter'
-    make_supervisor_conf()
 
     with settings(warn_only=True):
         if run("test -d %s" % code_dir).failed:
@@ -42,6 +39,5 @@ def deploy():
     with cd(code_dir):
         run("git pull")
         run(" pip install -r requirements.txt")
-        run("cp local_settings.py-dist local_settings.py")
         run("python manage.py syncdb --migrate --noinput")
-        run("supervisorctl restart recipecenter:gunicorn_recipecenter")
+        run("sudo supervisorctl restart recipecenter:gunicorn_recipecenter")
