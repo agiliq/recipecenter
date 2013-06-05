@@ -1,0 +1,79 @@
+<html>
+<html>
+<title>cPanel&reg;</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<style type="text/css">
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background-color:#367E8E;
+	scrollbar-base-color: #005B70;
+	scrollbar-arrow-color: #F3960B;
+	scrollbar-DarkShadow-Color: #000000;
+	color: #FFFFFF;
+}
+a { color:#021f25; text-decoration:none}
+h1 {
+	font-size: 18px;
+	color: #FB9802;
+	padding-bottom: 10px;
+	background-image: url(sys_cpanel/images/bottombody.jpg);
+	background-repeat: repeat-x;
+	padding-left: 15px;
+}
+#body-content p {
+	padding-left: 25px;
+	padding-right: 25px;
+	line-height: 18px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #FF9900;
+	padding-left: 15px;
+}
+</style>
+</head>
+<body>
+<div id="body-content">  
+<h1>Great Success <i>!</i>
+<br />
+Apache is working on your cPanel<sup>&reg;</sup> and WHM&#8482; Server</h1>
+<p>If you can see this page, then the people who manage this server have installed 
+<a href="http://www.cpanel.net">cPanel and WebHost Manager (WHM)</a> which use the 
+<a href="http://www.apache.org/">Apache Web server</a> software and the 
+<a href="http://www.modssl.org/">Apache Interface to OpenSSL (mod_ssl)</a> successfully. 
+They now have to add content to this directory and replace this placeholder page, or else 
+point the server at their real content.</p>
+
+<h2>ATTENTION!</h2>
+<p>If you are seeing this page instead of the site you expected, please <strong>contact the
+administrator of the site involved.</strong> (Try sending an email to 
+<samp>&lt;webmaster@<em>domain</em>&gt;</samp>.) Although this site is running cPanel, 
+WebHost Manager, and Apache software it almost certainly has no other connection to cPanel Inc.
+or the Apache Group. Please do not send mail about this site or its contents to cPanel Inc.
+or the Apache Group.</p>
+  
+<h2>About cPanel:</h2>
+<p>cPanel is a leading provider of software for the webhosting industry. If you would like 
+to learn more about cPanel please visit our website at <a href="http://www.cpanel.net/">www.cpanel.net</a>.
+Please be advised that cPanel Inc. is not a web hosting company, and as such has no control over
+content found elsewhere on this site.</p>
+
+<h2>About Apache HTTP Server:</h2>
+<p>The Apache HTTP Server is an open source web server which powers many of the worlds web sites.
+The Apache HTTP server is part of the Apache Group's many influential projects. Their efforts have 
+helped shape much the world wide web, and they continue to be a dominating force in the web hosting 
+industry.</p>
+</div>
+<table width="70%" align="center">
+	<tr>
+		<td align="center"><img src="sys_cpanel/images/powered_by.gif" /></td>
+		<td align="center"><img src="sys_cpanel/images/apache_pb.gif" /></td>
+	</tr>
+</table>
+<!-- REVISION: 1.3 -->
+</BODY>
+</HTML>
