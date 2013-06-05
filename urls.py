@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     url(r'^rate-my-post/(?P<object_id>\d+)/(?P<score>\d+)/$', AddRatingFromModel(), {
         'app_label': 'recipes',
-        'model': 'RecipeDump',
+        'model': 'Recipe',
         'field_name': 'rating',
     },name='vote'),
     # Uncomment the admin/doc line below to enable admin documentation:
