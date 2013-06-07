@@ -3,26 +3,25 @@
 {% block title %} Recipes about {{category_dishes.object_list.0.category}} - {% endblock %}
 
 {% block content %}
+<ul class="thumbnails">
 {% for dish  in category_dishes.object_list %} 
-    <ul>
-    <li><h1><b><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></h1></b></li>
-  <br/>
-        
-         <img src="{{ STATIC_URL }}images/{{dish.image}}" width=150px />
-        
-         <div class="text">
-        {{dish.instructions|safe|slice:":280"}}
-       <a href="{% url recipe_detail recipe_id=dish.slug %}"><i>{{"read more ..."}}</i></a>       
-       </br>
-     </div>
-    </ul>
+
+    <li class="span3 thumbnailBg">
+      <a class="thumbnail" href="{% url recipe_detail recipe_id=dish.slug %}">
+        <img src="{{ STATIC_URL }}images/{{dish.image}}" alt="">
+      </a>
+      <h4><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></h4>
+      <p>{{dish.instructions|safe|slice:":200"}}</p>
+      <p class="moreInfo"><a href="{% url recipe_detail recipe_id=dish.slug %}" class="innerlink">More Info...</a></p>
+    </li>
 
 {% endfor %}
+</ul>
 
-<div class="pagination">
+<div class="pagination pull-right">
     <span class="step-links">
         {% if category_dishes.has_previous %}
-            <a href="?page={{ category_dishes.previous_page_number }}">previous</a>
+            <a href="?page={{ category_dishes.previous_page_number }}"> Previous </a>
         {% endif %}
 
         <span class="current">
@@ -30,7 +29,7 @@
         </span>
 
         {% if category_dishes.has_next %}
-            <a href="?page={{ category_dishes.next_page_number }}">next</a>
+            <a href="?page={{ category_dishes.next_page_number }}"> Next </a>
         {% endif %}
     </span>
 </div>

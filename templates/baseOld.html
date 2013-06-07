@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}elements/css/main.css" />
+      <!--[if IE 6]><link rel="stylesheet" type="text/css" href="elements/css/ie6.css" /><![endif]--> 
+      
+      {% block title_head %}
+      <title>{% block title %}{% endblock %}RecipeCenter.in: Best Site for free recipes.</title>
+      {% endblock %}
+
+
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	  <script type="text/javascript"
+	  src="{{STATIC_URL}}elements/js/custom.js"></script> 
+          <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-367368-23']);
+            _gaq.push(['_setDomainName', '.recipecenter.in']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+          </script>
+</head>
+
+<body>
+
+<div id="top-bg"></div>
+<div id="wrapper-outer" class="clearfix">
+
+      <div id="pans"></div>
+      <div class="png"><div id="tea-towel"></div></div>
+
+      <!-- Wrapper Inner -->
+      <div id="wrapper-inner" class="clearfix">
+      
+            <div id="top-nav">
+                  <ul class="clearfix">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="http://www.agiliq.com">About Us</a></li>
+                        <li><a href="http://agiliq.com/contactus">Contact</a></li>  
+<!--
+<li><a href="faq.htm">FAQ</a></li>
+
+<li><a href="contact.htm">Contact</a></li>
+-->
+                       
+                        
+                  </ul>
+            </div>
+            
+            <div id="header">
+                  <h1><a href="/">Time for Food</a></h1>
+            </div>
+            
+             <div id="search">
+                  <form method="get" id="searchform"  action="/search/">
+                        <input type="text" value="" name="q" id="s" size="15" />
+                        <input type="submit" id="searchsubmit" value="" />
+                  </form>
+             </div>
+           
+            
+            
+            <!-- Content -->
+            <div id="content">
+             
+                  <div class="png"><img class="top" src="static/elements/images/top-curve.png" width="724" height="8" alt="" /></div>
+                  <div id="inner-content">
+                  {% block search %}
+
+                  {% endblock %}
+                  
+                  {% block content %}
+                  
+                  {% endblock %}
+                    <!-- template structure showing, food items -->
+                        <!-- <div class="post clearfix"> -->
+                        <!--       <h1><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</a></h1> -->
+                        <!--       <div class="author"> -->
+                        <!--             Written on the 12th August, 2009 by Keith Donegan -->
+                        <!--       </div> -->
+                        <!--       <div class="thumbnail-large"> -->
+                        <!--             <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a> -->
+                        <!--       </div> -->
+                        <!--       <div class="text"> -->
+                        <!--             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  -->
+                        <!--             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim  -->
+                        <!--             veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo  -->
+                        <!--             dolore eu fugcat cupidatat non proident,  -->
+                        <!--             sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
+                        <!--             <div class="meta"> -->
+                        <!--                   <a href="#">Category 1</a> <a href="#">Category 2</a> -->
+                        <!--                   <a href="#">Category 1</a> <a href="#">Category 2</a> -->
+                        <!--             </div> -->
+                                    
+                        <!--             <div class="serves serves-4">Serves Four</div> -->
+                        <!--             <div class="timer">30 Minutes cooking time</div> -->
+                        <!--       </div> -->
+                        <!-- </div> -->                        
+                        
+                       
+                        
+                  </div>
+                  <img class="curve-bottom" src="static/elements/images/bottom-curve.png" width="724" height="8" alt="" />
+            </div>
+            <!-- / Content -->
+            
+            <!-- Sidebar -->
+            <div id="sidebar">
+                  <div class="png"><img class="top" src="static/elements/images/sidebar-top.png" width="182" height="10" alt="" /></div>
+                  <div class="sidebar-inner">
+                        <div class="box">
+                              <h2>Categories</h2>
+                                {% if categobj.count %}
+                                <ul>
+                                {% for categ in  categobj %}
+                                    <li><a href="{% url category category_slug=categ.slug %}">{{ categ.name }} </a> </li>
+                                {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p> Screwed </p>
+                                {% endif %}
+                          </div>
+                  </div>
+                  
+                  <div class="png"><img class="top bottom" src="static/elements/images/sidebar-bottom.png" width="182" height="10" alt="" /></div>
+                  
+                  <div id="rss-pane">
+                        <div class="feedburner">
+                              <h2>Subscribe</h2>
+                              <a id="rss-icon" href="#">Subscribe via RSS</a>
+                              <p>Click on the icon to add our RSS Feed to your favourite reader and stay up to date with Time for Food!</p>
+                        </div>
+                        <div class="feedburner">
+                              <p class="margin">Want updates by email? Enter your email address below.</p>
+                              <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=keithdonegan', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+                                    <input id="feed-email" type="text" name="email" />
+                                    <input type="hidden" value="keithdonegan" name="uri" />
+                                    <input type="hidden" name="loc" value="en_US" />
+                                    <input id="feed-submit" type="submit" value="" />
+                              </form>
+                        </div>
+                  </div>
+            </div>
+            <!-- / Sidebar -->
+            
+            <div id="footer">
+                  <p>Developed by <a href="http://www.agiliq.com" target="_blank">Agiliq</a></p>
+            </div>
+            
+      </div>
+      <!-- / Wrapper Inner -->
+      
+</div>
+
+</body>
+</html>
