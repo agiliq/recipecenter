@@ -3,20 +3,49 @@
 {% block title %}{{recipe.name}} - {% endblock %}
 
 {% block content %}
-<h1> {{ recipe.name }} </h1>
 
-    <img src="{{ STATIC_URL }}images/{{recipe.image}}" />
-   <br>
-   <p>  The way to prepare it is:</p>
-<div class="text">
-{{ recipe.instructions|safe }}
+<div class="inner_content">
+	<h3> {{ recipe.name }} </h3>
+	<img src="{{ STATIC_URL }}images/{{recipe.image}}" />
+	<h5>  The way to prepare it is:</h5>
+	<p>{{ recipe.instructions|safe }}</p>
+	</br> </br> </br>
+	<h5>The ingredients are: </h5>
+	<p>{{ recipe.ingredients|safe }}</p><br><br>
+	<h5>Rate the recipe item</h5>
+	<p> <a href= {%url vote object_id=recipe.id, score=1%} class="btn btn-mini btn-primary"> Score 1 </a>
+		<a href= {%url vote object_id=recipe.id, score=2%} class="btn btn-mini btn-primary"> Score 2 </a>
+		<a href= {%url vote object_id=recipe.id, score=3%} class="btn btn-mini btn-primary"> Score 3 </a>
+		<a href= {%url vote object_id=recipe.id, score=4%} class="btn btn-mini btn-primary"> Score 4 </a>
+		{% load ratings %}
+		{% rating_by_request request on recipes.rating as vote %}
+		{{ vote }}
+	</p><br>
+	<h4>Comments: </h4>
+	<form class="form-horizontal">
+		<div class="control-group">
+        <label class="control-label" for="inputName">Name:</label>
+        <div class="controls"><input type="text" id="inputName"></div>
+		</div>
+        <div class="control-group">
+        <label class="control-label" for="inputEmail">Email Address:</label>
+        <div class="controls"><input type="text" id="inputEmail"></div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="inputURL">URL:</label>
+        <div class="controls"><input type="text" id="inputURL"></div>
+        </div>
+        <div class="control-group">
+        <label class="control-label" for="inputcomment">Comment:</label>
+        <div class="controls"><textarea rows="3"></textarea></div>
+        </div>
+        <div class="control-group">
+        <div class="controls"><button type="submit" class="btn btn-inverse">Post</button>&nbsp; &nbsp;
+          <button type="submit" class="btn btn-inverse">Reset</button></div>
+        </div>
+    </form>
 </div>
-</br> </br> </br>
-<p>The ingredients are: </p>
-<div class="text">
-{{ recipe.ingredients|safe }}
-</div>
-</br> </br>
+<!--</br> </br>
 
 {% load comments %}
 <p> Rate the recipe item </p> <br>
@@ -30,5 +59,5 @@
 <h4> Comments: </h4>
 {% render_comment_list for recipe %}
 
-{% render_comment_form for recipe %}
+{% render_comment_form for recipe %}-->
  {% endblock %}

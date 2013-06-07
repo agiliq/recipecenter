@@ -16,7 +16,7 @@ def hello(request):
 
 
 def base(request):
-    recipe_list = Recipe.objects.order_by('?')[:5]
+    recipe_list = Recipe.objects.order_by('?')[:12]
     return render(request, 'index.html', {'recipe_list': recipe_list})
 
 
@@ -24,7 +24,7 @@ def category(request, category_slug=None):
     p = Recipe.objects.filter(category__slug__exact=category_slug)
     if p.count() == 0:
         raise Http404
-    paginator = Paginator(p, 5)  # show 20 recipes per page
+    paginator = Paginator(p, 12)  # show 20 recipes per page
     page = request.GET.get('page', 1)
     try:
         contents = paginator.page(page)
