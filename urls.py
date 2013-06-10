@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from recipes import views
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from djangoratings.views import AddRatingFromModel
 from django.conf import settings
 # Uncomment the next two lines to enable the admin:
@@ -31,3 +31,11 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
+handler404 = 'recipes.views.handler_404'
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+                           (r'^static/(?P<path>.*)$',
+                            'django.views.static.serve',
+                            {'document_root': settings.MEDIA_ROOT}),
+                            )
