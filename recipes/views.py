@@ -17,7 +17,7 @@ def hello(request):
 
 
 def base(request):
-    recipe_list = Recipe.objects.order_by('?')[:5]
+    recipe_list = Recipe.objects.order_by('?')[:12]
     return render(request, 'index.html', {'recipe_list': recipe_list})
 
 

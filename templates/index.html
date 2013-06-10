@@ -4,25 +4,26 @@
 
 
 {% block content %}
-{% for dish  in recipe_list %} 
-   
-<ul>
-  <li><h1><b><a href="{% url 'recipe_detail' recipe_id=dish.slug %}">{{dish.name }}</a></h1></b></li>
-  <br/>
-  {% load thumbnail %}
+<ul class="thumbnails">
+{% for dish  in recipe_list %}
+
+	<li class="span3 thumbnailBg">
+		<a class="thumbnail" href="{% url recipe_detail recipe_id=dish.slug %}"><img src="{{ STATIC_URL }}images/{{dish.image}}" alt=""></a>
+		<h4><a href="{% url recipe_detail recipe_id=dish.slug %}">{{dish.name }}</a></h4>
+		<p>{{dish.instructions|safe|slice:":180"}}</p>
+    	<p class="moreInfo"><a href="{% url recipe_detail recipe_id=dish.slug %}" class="innerlink"><i>{{"More Info ..."}}</i></a>       </p>
+  	</li>
+ <!--  {% load thumbnail %}
   {% thumbnail dish.image "100x100" crop="center" as im %}
-  {# <!-- {% thumbnail STATIC_URL|add:"|images/"|add:dish.image  "100x100" crop="center" as im %} --> #}
+  {# {% thumbnail STATIC_URL|add:"|images/"|add:dish.image  "100x100" crop="center" as im %} #}
     <img src="{{im.url}}"  width="{{ im.width }}" height="{{ im.height }}"/>
-  {% endthumbnail %}      
-     
+  {% endthumbnail %} -->
 
-    <!--             <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a> --> 
 
-  <div class="text">
-    {{dish.instructions|safe|slice:":280"}}
-    <a href="{% url 'recipe_detail' recipe_id=dish.slug %}"><i>{{"read more ..."}}</i></a>       
+    <!--             <a href=""><img src="static/elements/images/sample-food/food-1.jpg" width="300" height="220" alt="" /></a
        </br></br></br>
-  </div>
-</ul>
+  </div>-->
+
 {% endfor %}
+</ul>
 {% endblock %}
