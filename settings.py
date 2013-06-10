@@ -136,7 +136,8 @@ INSTALLED_APPS = (
     'south',
     'haystack',
     'sorl.thumbnail',
-    'gunicorn'
+    'gunicorn',
+    'raven.contrib.django.raven_compat',
     # Uncomment the next line to enable the admin:
 
     # Uncomment the next line to enable admin documentation:
@@ -169,4 +170,10 @@ HAYSTACK_SITECONF = 'recipecenter.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 #HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
 HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__),'mysite_index')
+
+
+RAVEN_CONFIG = {
+    'dsn': 'http://ebffa33a0ad84304a5cecbe09b6edb41:14252e9632d84062b198c2b7fbb86d1d@sentry.agiliq.com/5',
+}
+
 from local_settings import *
