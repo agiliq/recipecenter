@@ -27,7 +27,11 @@ urlpatterns = patterns('',
 
 )
 
+handler404 = 'recipes.views.handler_404'
+
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
+                           (r'^static/(?P<path>.*)$',
+                            'django.views.static.serve',
+                            {'document_root': settings.MEDIA_ROOT}),
+                            )
