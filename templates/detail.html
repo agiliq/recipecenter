@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 
-{% load url from future %}
-
-
 {% block title %}{{recipe.name}} - {% endblock %}
 
 {% block content %}
@@ -16,10 +13,10 @@
 	<h5>The ingredients are: </h5>
 	<p>{{ recipe.ingredients|safe }}</p><br><br>
 	<h5>Rate the recipe item</h5>
-	<p> <a href= {%url vote object_id=recipe.id, score=1%} class="btn btn-mini btn-info"> Score 1 </a>
-		<a href= {%url vote object_id=recipe.id, score=2%} class="btn btn-mini btn-info"> Score 2 </a>
-		<a href= {%url vote object_id=recipe.id, score=3%} class="btn btn-mini btn-info"> Score 3 </a>
-		<a href= {%url vote object_id=recipe.id, score=4%} class="btn btn-mini btn-info"> Score 4 </a>
+	<p> <a href= {%url 'vote' object_id=recipe.id score=1%} class="btn btn-mini btn-info"> Score 1 </a>
+		<a href= {%url 'vote' object_id=recipe.id score=2%} class="btn btn-mini btn-info"> Score 2 </a>
+		<a href= {%url 'vote' object_id=recipe.id score=3%} class="btn btn-mini btn-info"> Score 3 </a>
+		<a href= {%url 'vote' object_id=recipe.id score=4%} class="btn btn-mini btn-info"> Score 4 </a>
 		{% load ratings %}
 		{% rating_by_request request on recipes.rating as vote %}
 		{{ vote }}
