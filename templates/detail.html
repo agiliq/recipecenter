@@ -13,10 +13,10 @@
 	<h5>The ingredients are: </h5>
 	<p>{{ recipe.ingredients|safe }}</p><br><br>
 	<h5>Rate the recipe item</h5>
-	<p> <a href= {%url vote object_id=recipe.id, score=1%} class="btn btn-mini btn-primary"> Score 1 </a>
-		<a href= {%url vote object_id=recipe.id, score=2%} class="btn btn-mini btn-primary"> Score 2 </a>
-		<a href= {%url vote object_id=recipe.id, score=3%} class="btn btn-mini btn-primary"> Score 3 </a>
-		<a href= {%url vote object_id=recipe.id, score=4%} class="btn btn-mini btn-primary"> Score 4 </a>
+	<p> <a href= {%url vote object_id=recipe.id, score=1%} class="btn btn-mini btn-info"> Score 1 </a>
+		<a href= {%url vote object_id=recipe.id, score=2%} class="btn btn-mini btn-info"> Score 2 </a>
+		<a href= {%url vote object_id=recipe.id, score=3%} class="btn btn-mini btn-info"> Score 3 </a>
+		<a href= {%url vote object_id=recipe.id, score=4%} class="btn btn-mini btn-info"> Score 4 </a>
 		{% load ratings %}
 		{% rating_by_request request on recipes.rating as vote %}
 		{{ vote }}
@@ -48,14 +48,6 @@
 <!--</br> </br>
 
 {% load comments %}
-<p> Rate the recipe item </p> <br>
-<a href= {%url vote object_id=recipe.id, score=1%}> Score 1 </a> </br>
-<a href= {%url vote object_id=recipe.id, score=2%}> Score 2 </a> </br>
-<a href= {%url vote object_id=recipe.id, score=3%}> Score 3 </a> </br>
-<a href= {%url vote object_id=recipe.id, score=4%}> Score 4 </a> </br>
-{% load ratings %}
-{% rating_by_request request on recipes.rating as vote %}
-{{ vote }}
 <h4> Comments: </h4>
 {% render_comment_list for recipe %}
 
