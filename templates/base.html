@@ -34,7 +34,7 @@
             <ul class="nav sidenav">
 				<li class="tophead">Categories</li>
             	{% for categ in  categobj %}
-                <li><a href="{% url 'category' category_slug=categ.slug %}">{{ categ.name }} </a> </li>
+                <li><a href="{% url 'category' categ.slug %}">{{ categ.name }} </a> </li>
             	{% endfor %}
             </ul>
             {% else %}
@@ -64,7 +64,7 @@
         	{% if categobj.count %}
             <ul>
 				{% for categ in  categobj %}
-                <li><a href="{% url 'category' category_slug=categ.slug %}">{{ categ.name }} </a> </li>
+                <li><a href="{% url 'category' categ.slug %}">{{ categ.name }} </a> </li>
             	{% endfor %}
             </ul>
             {% else %}
