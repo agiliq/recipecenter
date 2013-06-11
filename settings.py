@@ -7,20 +7,20 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-TEMPLATE_CONTEXT_PROCESSORS=(
-"django.contrib.auth.context_processors.auth",
-"django.core.context_processors.debug",
-"django.core.context_processors.i18n",
-"django.core.context_processors.media",
-"django.core.context_processors.static",
-"django.contrib.messages.context_processors.messages",
-"recipes.context_processor.call_category",
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages",
+    "recipes.context_processor.call_category",
 )
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'recipe.db',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'agiliq',                  # Not used with sqlite3.
@@ -56,7 +56,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'static_media')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'static_media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -67,7 +67,7 @@ MEDIA_URL = '/static_media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(os.path.dirname(__file__),'static')
+STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -92,7 +92,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -102,7 +102,7 @@ SECRET_KEY = '9hk2b0p=4+**cq0!=mn7)!3dz1s(w=-&ceq#fvv_&5!b507e)t'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -116,7 +116,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__),'templates'),
+    os.path.join(os.path.dirname(__file__), 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -166,10 +166,13 @@ LOGGING = {
         },
     }
 }
+
+NUMBER_OF_ENTRIES_PER_PAGE = 5
+
 HAYSTACK_SITECONF = 'recipecenter.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 #HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
-HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__),'mysite_index')
+HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'mysite_index')
 
 
 RAVEN_CONFIG = {
