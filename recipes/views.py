@@ -28,7 +28,7 @@ class CategoryView(View):
         if p.count() == 0:
             raise Http404
         paginator = Paginator(p, 5)  # show 20 recipes per page
-        page = request.GET.get('page', 1)
+        page = int(request.GET.get('page', 1))
         try:
             contents = paginator.page(page)
         except EmptyPage:
