@@ -1,11 +1,10 @@
 from django.http import HttpResponse
-from recipes.models import Recipe
 from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
-# from djangoratings.views import AddRatingView
 from django.views.generic.base import View
+from recipes.models import Recipe
 from recipecenter import settings
 
 
@@ -14,7 +13,7 @@ def render(request, template, context):
 
 
 def hello(request):
-    return HttpResponse("Angry Birds is like life, the more you play the more you enjoy, the more you calculate, the tougher it get.")
+    return HttpResponse("Welcome to recipecenter")
 
 
 def base(request):
