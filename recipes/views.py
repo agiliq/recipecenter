@@ -6,6 +6,7 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 # from djangoratings.views import AddRatingView
 from django.views.generic.base import View
+from recipecenter import settings
 
 
 def render(request, template, context):
@@ -27,7 +28,7 @@ class CategoryView(View):
         p = Recipe.objects.filter(category__slug__exact=category_slug)
         if p.count() == 0:
             raise Http404
-        paginator = Paginator(p, 5)  # show 20 recipes per page
+        paginator = Paginator(p, settings.NUMBER_OF_ENTRIES_PER_PAGE)
         page = int(request.GET.get('page', 1))
         try:
             contents = paginator.page(page)
