@@ -40,7 +40,7 @@ class Recipe(models.Model):
     #rating = RatingField(range=5, allow_anonymous=True)
 
     is_featured = models.BooleanField('Featured',
-                                      default=True,
+                                      default=False,
                                       help_text='Designates whether this\
                                       recipe should be treated as featured.')
 
