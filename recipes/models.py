@@ -37,12 +37,12 @@ class Recipe(models.Model):
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    rating = RatingField(range=5, allow_anonymous=True)
+    #rating = RatingField(range=5, allow_anonymous=True)
 
-    # is_featured = models.BooleanField('Featured',
-    #                                   default=True,
-    #                                   help_text='Designates whether this\
-    #                                   recipe should be treated as featured.')
+    is_featured = models.BooleanField('Featured',
+                                      default=True,
+                                      help_text='Designates whether this\
+                                      recipe should be treated as featured.')
 
     def title(self):
         return self.name
