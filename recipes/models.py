@@ -39,6 +39,11 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=100)
     rating = RatingField(range=5, allow_anonymous=True)
 
+    # is_featured = models.BooleanField('Featured',
+    #                                   default=True,
+    #                                   help_text='Designates whether this\
+    #                                   recipe should be treated as featured.')
+
     def title(self):
         return self.name
 
