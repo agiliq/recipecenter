@@ -17,10 +17,8 @@ def hello(request):
 
 
 def base(request):
-    featured_recipes = Recipe.objects.filter(is_featured=True).order_by('?')
-    non_featured_recipes = Recipe.objects.filter(is_featured=False).order_by('?')
-    recipe_list = list(featured_recipes) + list(non_featured_recipes)
-    recipe_list = recipe_list[:settings.NUMBER_OF_ENTRIES_PER_PAGE]
+    recipe_list = Recipe.objects.all().order_by('-is_featured', '?')\
+        [:settings.NUMBER_OF_ENTRIES_PER_PAGE]
     return render(request, 'index.html', {'recipe_list': recipe_list})
 
 
