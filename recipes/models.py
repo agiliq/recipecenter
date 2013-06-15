@@ -1,5 +1,4 @@
 from django.db import models
-from djangoratings.fields import RatingField
 
 # Create your models here.
 
@@ -37,7 +36,6 @@ class Recipe(models.Model):
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-    #rating = RatingField(range=5, allow_anonymous=True)
 
     is_featured = models.BooleanField('Featured',
                                       default=False,
