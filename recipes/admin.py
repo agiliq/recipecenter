@@ -1,6 +1,7 @@
 from django.contrib import admin
 from recipes.models import Recipe, Category
 
+
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ["name", "is_featured"]
 
