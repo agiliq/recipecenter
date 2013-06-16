@@ -19,6 +19,10 @@ class SiteTestCase(TestCase):
         response = self.c.get(reverse("hello"))
         self.assertEqual(response.status_code, 200)
 
+    def test_basepage(self):
+        response = self.c.get(reverse("base"))
+        self.assertEqual(response.status_code, 200)
+
 
 # class SimpleTest(TestCase):
 #     def test_basic_addition(self):
