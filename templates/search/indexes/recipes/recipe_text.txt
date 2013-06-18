@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.category }}
+{{ object.name }}
+{{ object.ingredients }}
+{{ object.slug }}
+{{ object.body }}
