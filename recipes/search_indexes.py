@@ -1,6 +1,5 @@
 import datetime
 from haystack import indexes
-from haystack import site
 from recipes.models import Recipe
 
 
@@ -11,7 +10,8 @@ class RecipeIndex(indexes.SearchIndex, indexes.Indexable):
     ingredients = indexes.CharField(model_attr='ingredients')
     slug = indexes.CharField(model_attr='slug')
 
-    def index_queryset(self):
-        return RecipeIndex.objects.filter(pub_date_lte=datetime.datetime.now())
+    def get_model(self):
+        return Recipe
 
-site.register(Recipe, RecipeIndex)
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()
