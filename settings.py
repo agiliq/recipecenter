@@ -131,7 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.comments',
-    'djangoratings',
+    #'djangoratings',
     'recipes',
     'south',
     'haystack',
@@ -167,7 +167,7 @@ LOGGING = {
     }
 }
 
-NUMBER_OF_ENTRIES_PER_PAGE = 5
+NUMBER_OF_ENTRIES_PER_PAGE = 12
 
 HAYSTACK_SITECONF = 'recipecenter.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
