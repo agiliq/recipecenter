@@ -169,10 +169,21 @@ LOGGING = {
 
 NUMBER_OF_ENTRIES_PER_PAGE = 12
 
-HAYSTACK_SITECONF = 'recipecenter.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-#HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
-HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'mysite_index')
+import os
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'mysite_index'),
+    },
+}
+
+
+
+
+# HAYSTACK_SITECONF = 'recipecenter.search_sites'
+# HAYSTACK_SEARCH_ENGINE = 'whoosh'
+# #HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
+# HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'mysite_index')
 
 
 RAVEN_CONFIG = {
