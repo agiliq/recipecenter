@@ -9,30 +9,6 @@
 <link href="{{ STATIC_URL }}elements/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="{{ STATIC_URL }}elements/css/recipecenter.css" rel="stylesheet">
 <script src="{{ STATIC_URL }}elements/js/jquery.min.js"></script>
-
-<script type="text/javascript">
-
-jQuery(document).ready(function($){
-    // search form submits
-    $('.form-search').submit(function(){
-        $.ajax({
-            cache: false,
-            data: $(this).serialize(),
-            type: "GET",
-            url: "/search/",
-            beforeSend: function(x){
-                $(".span9").empty();
-            },
-            success: function(response) {
-                $(".span9").html(response);
-            }
-        });
-
-        return false;
-    });
-});
-</script>
-
 </head>
 
 <body>
@@ -50,7 +26,7 @@ jQuery(document).ready(function($){
 				<li class=""><a href="#">About Us</a></li>
 				<li class=""><a href="#">Contact Us</a></li>
 			</ul>-->
-            <form method="get" action="." class="form-search">
+            <form method="get" action="/search/" class="form-search">
         		<div class="input-append">
     	    		<input id="id_q" name="q" type="text" class="span2 search-query search-input" placeholder="Search">
         	      	<input type="image" src="{{ STATIC_URL }}elements/images/search_button.png" class="add-on" value="">
@@ -91,7 +67,6 @@ jQuery(document).ready(function($){
         </div>
         <div class="span9"><!--Right Content Starts-->
           {% block content %}
-
           {% endblock %}
 
         </div><!--Right Content ends-->
