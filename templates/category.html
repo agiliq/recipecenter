@@ -11,7 +11,7 @@
         <img src="{{ STATIC_URL }}images/{{dish.image}}" alt="">
       </a>
       <h4><a href="{% url 'recipe_detail' recipe_id=dish.slug %}">{{dish.name }}</a></h4>
-      <p>{{dish.instructions|safe|slice:":200"}}</p>
+      <p>{{dish.instructions|striptags|slice:":240"}}</p>
       <p class="moreInfo"><a href="{% url 'recipe_detail' recipe_id=dish.slug %}" class="innerlink">More Info...</a></p>
     </li>
 
