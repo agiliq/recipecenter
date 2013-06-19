@@ -5,9 +5,34 @@
 <title>{% block title %}{% endblock %}RecipeCenter.in: Best Site for free recipes.</title>
 {% endblock %}
 
-<link href="{{STATIC_URL}}elements/css/bootstrap.css" rel="stylesheet">
-<link href="{{STATIC_URL}}elements/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="{{STATIC_URL}}elements/css/recipecenter.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}elements/css/bootstrap.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}elements/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}elements/css/recipecenter.css" rel="stylesheet">
+<script src="{{ STATIC_URL }}elements/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function($){
+    // search form submits
+    $('.form-search').submit(function(){
+        $.ajax({
+            cache: false,
+            data: $(this).serialize(),
+            type: "GET",
+            url: "/search/",
+            beforeSend: function(x){
+                $(".span9").empty();
+            },
+            success: function(response) {
+                $(".span9").html(response);
+            }
+        });
+
+        return false;
+    });
+});
+</script>
+
 </head>
 
 <body>
@@ -27,35 +52,9 @@
 			</ul>-->
             <form method="get" action="." class="form-search">
         		<div class="input-append">
-    	    		<input type="text" class="span2 search-query search-input" placeholder="Search">
+    	    		<input id="id_q" name="q" type="text" class="span2 search-query search-input" placeholder="Search">
         	      	<input type="image" src="{{ STATIC_URL }}elements/images/search_button.png" class="add-on" value="">
 	            </div>
-				<!--{% if query %}
-            <h3>Results</h3>
-
-            <div id="inner-content">
-            {% for result in page.object_list %}
-                <p>
-                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
-                </p>
-                <div class="text">
-                {{ result.object.instructions|safe|slice:":280" }}   <a href="{{ result.object.get_absolute_url }}">{{"read more..."}}</a>
-                </div>
-                <br>
-            {% empty %}
-                <p>No results found.</p>
-            {% endfor %}
-
-            {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-                </div>
-            {% endif %}
-        {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
-        {% endif %}-->
         	</form>
 		</div>
 		</div>
