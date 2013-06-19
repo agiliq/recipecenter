@@ -25,7 +25,7 @@ def base(request):
 class CategoryView(View):
 
     def get(self, request, category_slug=None, *args, **kwargs):
-        Recipe.objects.filter(is_featured=True)
+        #Recipe.objects.filter(is_featured=True)
         p = Recipe.objects.filter(category__slug__exact=category_slug)
         if p.count() == 0:
             raise Http404
