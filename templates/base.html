@@ -11,7 +11,31 @@
 </head>
 
 <body>
-
+<div class="navbar navbar-inverse navbar-fixed-top"><!--Top Navigation-->
+	<div class="navbar-inner">
+    	<div class="container">
+        	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          	</button>
+		<div class="nav-collapse collapse">
+        	<!--<ul class="nav">
+            	<li class="active"><a href="index.html">Home</a></li>
+				<li class=""><a href="#">About Us</a></li>
+				<li class=""><a href="#">Contact Us</a></li>
+			</ul>-->
+            <form method="get" action="." class="form-search">
+        		<div class="input-append">
+    	    		<input type="text" class="span2 search-query search-input" placeholder="Search">
+        	      	<input type="image" src="{{ STATIC_URL }}elements/images/search_button.png" class="add-on" value="">
+	            </div>
+				
+        	</form>
+		</div>
+		</div>
+	</div>
+</div><!--Top Navigation Ends-->
 
 <header class="header"><!--Header Starts-->
 	<div class="container">
