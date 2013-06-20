@@ -9,4 +9,3 @@ gunicorn==0.17.4
 redis==2.7.4
 sorl-thumbnail==11.12
 wsgiref==0.1.2
-
