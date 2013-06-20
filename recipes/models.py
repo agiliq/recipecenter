@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -15,15 +13,6 @@ class Category(models.Model):
 
 
 class Recipe(models.Model):
-    # class Meta:
-        # db_table = "addrecipe"
-        # ordering = ['name']
-
-    def __unicode__(self):
-        return self.name
-
-    #imported_pk = models.IntegerField()
-   # category_name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, null=True, blank=True)
     something = models.CharField(max_length=100, null=True, blank=True)
     name = models.CharField(max_length=100)
@@ -36,11 +25,13 @@ class Recipe(models.Model):
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
-
     is_featured = models.BooleanField('Featured',
                                       default=False,
                                       help_text='Designates whether this\
                                       recipe should be treated as featured.')
+
+    def __unicode__(self):
+        return self.name
 
     def title(self):
         return self.name
