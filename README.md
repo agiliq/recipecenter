@@ -6,4 +6,5 @@ Features:
 
 1. List of Recipes.
 2. Categories
-3 Mark recipes as featured
+3. Mark recipes as featured
+4. Mobile friendly UI (Based on twitter bootstrap).
