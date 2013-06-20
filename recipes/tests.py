@@ -34,6 +34,10 @@ class SiteTestCase(TestCase):
         response = self.c.get(reverse("category", args=["special-filipino-delicacies"]))
         self.assertEqual(response.status_code, 200)
 
+    def test_detailpage(self):
+        response = self.c.get(reverse("recipe_detail", args=["chicken-and-pork-adobo"]))
+        self.assertEqual(response.status_code, 200)
+
 
 # class SimpleTest(TestCase):
 #     def test_basic_addition(self):
