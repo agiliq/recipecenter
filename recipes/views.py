@@ -41,8 +41,8 @@ class CategoryView(View):
 category = CategoryView.as_view()
 
 
-def detail(request, recipe_id=None):
-    p = Recipe.objects.filter(slug=recipe_id)
+def detail(request, slug=None):
+    p = Recipe.objects.filter(slug=slug)
     if p.count() == 0:
         raise Http404
     return render(request, 'detail.html', {'recipe': p[0]})
