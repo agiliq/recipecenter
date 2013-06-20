@@ -177,17 +177,11 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
-
-
-
-# HAYSTACK_SITECONF = 'recipecenter.search_sites'
-# HAYSTACK_SEARCH_ENGINE = 'whoosh'
-# #HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipecenter/whoosh/mysite_index'
-# HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'mysite_index')
-
-
 RAVEN_CONFIG = {
     'dsn': 'http://ebffa33a0ad84304a5cecbe09b6edb41:14252e9632d84062b198c2b7fbb86d1d@sentry.agiliq.com/5',
 }
-
-from local_settings import *
+try:
+    from local_settings import *
+except ImportError:
+    print "Missing localsettings."
+    pass
