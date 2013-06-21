@@ -4,10 +4,10 @@
 <ul class="thumbnails">
 {% for dish  in recipe_list %}
   <li class="span3 thumbnailBg">
-    <a class="thumbnail" href="{{ dish.get_absolute_url }}"><img src="{{ STATIC_URL }}images/{{dish.image}}" alt=""></a>
-    <h4><a href="{{ dish.get_absolute_url }}">{{dish.name }}</a></h4>
+    <a class="thumbnail" href="{% url 'recipe_detail' slug=dish.slug %}"><img src="{{ STATIC_URL }}images/{{dish.image}}" alt=""></a>
+    <h4><a href="{% url 'recipe_detail' slug=dish.slug %}">{{dish.name }}</a></h4>
     <p>{{dish.instructions|striptags|slice:":230"}}</p>
-      <p class="moreInfo"><a href="{{ dish.get_absolute_url }}" class="innerlink"><i>{{"More Info ..."}}</i></a>       </p>
+      <p class="moreInfo"><a href="{% url 'recipe_detail' slug=dish.slug %}" class="innerlink"><i>{{"More Info ..."}}</i></a>       </p>
     </li>
 {% endfor %}
 </ul>
