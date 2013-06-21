@@ -2,8 +2,7 @@ Code for [recipecenter.in](http://recipecenter.in/)
 
 [![Build Status](https://travis-ci.org/agiliq/recipecenter.png?branch=master)](https://travis-ci.org/agiliq/recipecenter)
 
-
-[![Coverage Status](https://coveralls.io/agiliq/recipecenter/badge.png?branch=master)](https://coveralls.io/r/agiliq/recipecenter?branch=master)
+[![Coverage Status](https://coveralls.io/repos/agiliq/recipecenter/badge.png?branch=master)](https://coveralls.io/r/agiliq/recipecenter?branch=master)
 
 Features:
 
