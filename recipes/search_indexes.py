@@ -1,4 +1,3 @@
-import datetime
 from haystack import indexes
 from recipes.models import Recipe
 
