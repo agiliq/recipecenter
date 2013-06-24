@@ -5,4 +5,5 @@ recipe.db
 *#*
 local_settings.py
 *.komodoproject
-mysite_index
+mysite_index/*
+build/*
