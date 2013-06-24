@@ -33,11 +33,3 @@ class SiteTestCase(TestCase):
     def test_detailpage(self):
         response = self.c.get(reverse("recipe_detail", args=["chicken-and-pork-adobo"]))
         self.assertEqual(response.status_code, 200)
-
-
-# class SimpleTest(TestCase):
-#     def test_basic_addition(self):
-#         """
-#         Tests that 1 + 1 always equals 2.
-#         """
-#         self.assertEqual(1 + 1, 2)
