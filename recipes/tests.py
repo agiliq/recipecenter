@@ -22,10 +22,6 @@ class SiteTestCase(TestCase):
                               slug='chicken-and-pork-adobo',
                               is_featured=True)
 
-    def test_startpage(self):
-        response = self.c.get(reverse("hello"))
-        self.assertEqual(response.status_code, 200)
-
     def test_basepage(self):
         response = self.c.get(reverse("base"))
         self.assertEqual(response.status_code, 200)
