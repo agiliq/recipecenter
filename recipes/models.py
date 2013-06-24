@@ -1,5 +1,8 @@
 from django.db import models
 
+import os
+import settings
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -38,19 +41,3 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return "/detail/%s/" % self.slug
-
-    def get_image(self):
-        try:
-            #temp = open(self.image)
-            import os
-            import settings
-
-            image_url = os.path.join(settings.STATIC_ROOT,
-                                     'images/%s' % self.image)
-            print "image_url", image_url
-            #temp.close()
-
-        except IOError:
-            image_url = None
-        print image_url
-        return image_url
