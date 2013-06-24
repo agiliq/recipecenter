@@ -1,19 +1,11 @@
 from django.http import HttpResponse
 from django.http import Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.base import View
 from recipes.models import Recipe
 from recipecenter import settings
-
-
-def render(request, template, context):
-    return render_to_response(template, context, context_instance=RequestContext(request))
-
-
-def hello(request):
-    return HttpResponse("Welcome to recipecenter")
 
 
 def base(request):
@@ -46,10 +38,3 @@ def detail(request, slug=None):
     if p.count() == 0:
         raise Http404
     return render(request, 'detail.html', {'recipe': p[0]})
-
-
-from django.shortcuts import render as render2
-
-
-def handler_404(request):
-    return render2(request, '404.html', {}, status=404)
