@@ -7,3 +7,4 @@ local_settings.py
 *.komodoproject
 mysite_index/*
 build/*
+data/*
