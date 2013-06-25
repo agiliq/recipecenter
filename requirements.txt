@@ -4,7 +4,6 @@ South==0.7.6
 Whoosh==2.4.1
 argparse==1.2.1
 django-haystack==2.0.0
-django-ratings==0.3.7
 gunicorn==0.17.4
 raven==3.3.9
 redis==2.7.4
