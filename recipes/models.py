@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return "/category/%s/" % self.name
+        return reverse('category', args=[self.name])
 
     class Meta:
         verbose_name_plural = "categories"
@@ -42,5 +42,4 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        #return "/detail/%s/" % self.slug
         return reverse("recipe_detail", args=[self.slug])
