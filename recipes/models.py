@@ -1,7 +1,6 @@
-from django.db import models
+from django.core.urlresolvers import reverse
 
-import os
-import settings
+from django.db import models
 
 
 class Category(models.Model):
@@ -40,4 +39,5 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return "/detail/%s/" % self.slug
+        #return "/detail/%s/" % self.slug
+        return reverse("recipe_detail", args=[self.slug])
