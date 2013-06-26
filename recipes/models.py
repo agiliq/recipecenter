@@ -13,6 +13,9 @@ class Category(models.Model):
     def get_absolute_url(self):
         return "/category/%s/" % self.name
 
+    class Meta:
+        verbose_name_plural = "categories"
+
 
 class Recipe(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True)
