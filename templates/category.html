@@ -8,7 +8,7 @@
 
     <li class="span3 thumbnailBg">
       <a class="thumbnail" href="{{ dish.get_absolute_url }}">
-        <img src="{{ STATIC_URL }}images/{{dish.image}}" alt="">
+        <img src="{{ MEDIA_URL }}images/{{dish.image}}" alt="">
       </a>
       <h4><a href="{{ dish.get_absolute_url }}">{{dish.name }}</a></h4>
       <p>{{dish.instructions|safe|slice:":200"}}</p>
