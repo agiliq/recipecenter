@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.base import View
 from recipes.models import Recipe
-from recipecenter import settings
+from django.conf import settings
 
 
 def base(request):
