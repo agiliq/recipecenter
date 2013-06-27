@@ -3,7 +3,7 @@ recipe.db
 *.pyc
 *~
 *#*
-local_settings.py
+settings/local.py
 *.komodoproject
 mysite_index/*
 build/*
