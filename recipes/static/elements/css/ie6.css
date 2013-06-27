@@ -1,0 +1,10 @@
+
+
+
+
+#search input#searchsubmit {
+	border: 1px solid none;
+}
+img, div.png, #rss-pane, #tea-towel { 
+	behavior: url(http://www.eirestudio.net/themeforest/time-for-food/elements/js/iepngfix.htc) 
+}
