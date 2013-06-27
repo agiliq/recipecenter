@@ -8,3 +8,4 @@ settings/local.py
 mysite_index/*
 build/*
 data/*
+media/*
