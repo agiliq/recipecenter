@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url('^category/(?P<category_slug>[\w-]+)/$', 'recipes.views.category', name='category'),
     url('^detail/(?P<slug>[\w-]+)/$', 'recipes.views.detail', name='recipe_detail'),
     url(r'^admin/', include(admin.site.urls)),
-    (r'^search/', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls')),
 
 )
 
