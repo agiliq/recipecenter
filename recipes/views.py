@@ -1,9 +1,8 @@
-from django.http import HttpResponse
 from django.http import Http404
-from django.shortcuts import render_to_response, render
-from django.template import RequestContext
+from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.base import View
+from django.views.generic.detail import DetailView
 from recipes.models import Recipe
 from django.conf import settings
 
@@ -33,8 +32,11 @@ class CategoryView(View):
 category = CategoryView.as_view()
 
 
-def detail(request, slug=None):
-    p = Recipe.objects.filter(slug=slug)
-    if p.count() == 0:
-        raise Http404
-    return render(request, 'detail.html', {'recipe': p[0]})
+class RecipeDetailView(DetailView):
+    def dispatch(self, request, slug=None):
+        p = Recipe.objects.filter(slug=slug)
+        if p.count() == 0:
+            raise Http404
+        return render(request, 'detail.html', {'recipe': p[0]})
+
+detail = RecipeDetailView.as_view()
