@@ -14,11 +14,7 @@ class SiteTestCase(TestCase):
         Recipe.objects.create(category=self.category,
                               name='Chiken and Pork Adobo',
                               ingredients='1 cup white or cider vinegar',
-                              blah='0',
                               added_by='Ed Pudol',
-                              foo='0',
-                              bar='4',
-                              baz='0',
                               slug='chicken-and-pork-adobo',
                               is_featured=True)
 
