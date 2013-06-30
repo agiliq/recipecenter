@@ -128,7 +128,6 @@ INSTALLED_APPS = (
     'recipes',
     'south',
     'haystack',
-    'sorl.thumbnail',
     'gunicorn',
     'raven.contrib.django.raven_compat',
 )
