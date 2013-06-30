@@ -19,16 +19,11 @@ class Category(models.Model):
 
 class Recipe(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True)
-    something = models.CharField(max_length=100, null=True, blank=True)
     name = models.CharField(max_length=100)
     ingredients = models.TextField()
     instructions = models.TextField()
     image = models.CharField(max_length=100, null=True, blank=True)
-    blah = models.CharField(max_length=100)
     added_by = models.CharField(max_length=100)
-    foo = models.CharField(max_length=100)
-    bar = models.CharField(max_length=100)
-    baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
     is_featured = models.BooleanField('Featured',
                                       default=False,
