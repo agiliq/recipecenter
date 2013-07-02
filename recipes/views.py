@@ -3,13 +3,14 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
-from recipes.models import Recipe
 from django.conf import settings
+
+from recipes.models import Recipe
 
 
 def base(request):
-    recipe_list = Recipe.objects.all().order_by('-is_featured', '?')\
-        [:settings.NUMBER_OF_ENTRIES_PER_PAGE]
+    recipe_list = Recipe.objects.all().order_by(
+            '-is_featured', '?')[:settings.NUMBER_OF_ENTRIES_PER_PAGE]
     return render(request, 'index.html', {'recipe_list': recipe_list})
 
 
