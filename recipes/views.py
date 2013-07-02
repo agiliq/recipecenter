@@ -16,9 +16,8 @@ def base(request):
 class CategoryView(View):
 
     def get(self, request, category_slug=None, *args, **kwargs):
-        #Recipe.objects.filter(is_featured=True)
         p = Recipe.objects.filter(category__slug__exact=category_slug)
-        if p.count() == 0:
+        if not p.count():
             raise Http404
         paginator = Paginator(p, settings.NUMBER_OF_ENTRIES_PER_PAGE)
         page = int(request.GET.get('page', 1))
