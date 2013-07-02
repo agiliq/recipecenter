@@ -1,7 +1,3 @@
-from django.http import Http404
-from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage
-from django.views.generic.base import View
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.conf import settings
@@ -9,7 +5,7 @@ from django.conf import settings
 from recipes.models import Recipe
 
 
-class RecipeBaseView(ListView):
+class RecipeIndexView(ListView):
 
     context_object_name = 'recipe_list'
     template_name = 'index.html'
@@ -18,23 +14,25 @@ class RecipeBaseView(ListView):
         return Recipe.objects.all().order_by(
                 '-is_featured', '?')[:settings.NUMBER_OF_ENTRIES_PER_PAGE]
 
-base = RecipeBaseView.as_view()
+base = RecipeIndexView.as_view()
 
 
-class CategoryView(View):
+class CategoryView(ListView):
 
-    def get(self, request, category_slug=None, *args, **kwargs):
-        p = Recipe.objects.filter(category__slug__exact=category_slug)
-        if not p.count():
-            raise Http404
-        paginator = Paginator(p, settings.NUMBER_OF_ENTRIES_PER_PAGE)
-        page = int(request.GET.get('page', 1))
-        try:
-            contents = paginator.page(page)
-        except EmptyPage:
-            #If page is out of range, deliver last page of results.
-            contents = paginator.page(paginator.num_pages)
-        return render(request, 'category.html', {'category_dishes': contents})
+    template_name = 'category.html'
+    paginate_by = settings.NUMBER_OF_ENTRIES_PER_PAGE
+    allow_empty = False #404 page should be shown for wrong category
+
+    def get_queryset(self):
+        return Recipe.objects.filter(
+                category__slug=self.kwargs.get('category_slug'))
+
+    def get_context_data(self, **kwargs):
+        #Did this because the template uses context `category_dishes`
+        #If we change the template to use `page_obj`, we can remove this
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        context['category_dishes'] = context['page_obj']
+        return context
 
 category = CategoryView.as_view()
 
