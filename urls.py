@@ -10,7 +10,6 @@ urlpatterns = patterns('',
     url('^detail/(?P<slug>[\w-]+)/$', 'recipes.views.detail', name='recipe_detail'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls')),
-
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
