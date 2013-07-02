@@ -32,10 +32,8 @@ category = CategoryView.as_view()
 
 
 class RecipeDetailView(DetailView):
-    def get(self, request, slug=None):
-        recipe_obj = Recipe.objects.get(slug=slug)
-        if not recipe_obj:
-            raise Http404
-        return render(request, 'detail.html', {'recipe': recipe_obj})
+    context_object_name = 'recipe'
+    model = Recipe
+    template_name = 'detail.html'
 
 detail = RecipeDetailView.as_view()
