@@ -3,15 +3,22 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.base import View
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.conf import settings
 
 from recipes.models import Recipe
 
 
-def base(request):
-    recipe_list = Recipe.objects.all().order_by(
-            '-is_featured', '?')[:settings.NUMBER_OF_ENTRIES_PER_PAGE]
-    return render(request, 'index.html', {'recipe_list': recipe_list})
+class RecipeBaseView(ListView):
+
+    context_object_name = 'recipe_list'
+    template_name = 'index.html'
+
+    def get_queryset(self):
+        return Recipe.objects.all().order_by(
+                '-is_featured', '?')[:settings.NUMBER_OF_ENTRIES_PER_PAGE]
+
+base = RecipeBaseView.as_view()
 
 
 class CategoryView(View):
