@@ -2,7 +2,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.conf import settings
 
-from recipes.models import Recipe
+from .models import Recipe
 
 
 class RecipeIndexView(ListView):
@@ -21,7 +21,7 @@ class CategoryView(ListView):
 
     template_name = 'category.html'
     paginate_by = settings.NUMBER_OF_ENTRIES_PER_PAGE
-    allow_empty = False #404 page should be shown for wrong category
+    allow_empty = False  # 404 page should be shown for wrong category
 
     def get_queryset(self):
         return Recipe.objects.filter(

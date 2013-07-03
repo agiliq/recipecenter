@@ -1,4 +1,4 @@
-from recipes.models import Category
+from .models import Category
 
 
 def call_category(request):

@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.core.urlresolvers import reverse
-from recipes.models import Recipe, Category
+
+from .models import Recipe, Category
 
 
 class SiteTestCase(TestCase):
@@ -23,9 +24,11 @@ class SiteTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_categorypage(self):
-        response = self.c.get(reverse("category", args=["special-filipino-delicacies"]))
+        response = self.c.get(
+                reverse("category", args=["special-filipino-delicacies"]))
         self.assertEqual(response.status_code, 200)
 
     def test_detailpage(self):
-        response = self.c.get(reverse("recipe_detail", args=["chicken-and-pork-adobo"]))
+        response = self.c.get(
+                reverse("recipe_detail", args=["chicken-and-pork-adobo"]))
         self.assertEqual(response.status_code, 200)
